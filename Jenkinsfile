@@ -6,16 +6,15 @@ pipeline{
     }
 
     parameters {
-        string(name: 'GREETING', defaultValue: 'Hello', description: 'The greeting message')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'A boolean parameter')
-        choice(name: 'CHOICE', choices: ['Option 1', 'Option 2', 'Option 3'], description: 'Choose an option')
+        string(name: 'version_name', defaultValue: 'v1.0', description: 'build version')
+        choice(name: 'build_type', choices: ['Debug', 'Release'], description: 'build type')
     }
 
     stages {
         stage('Build'){
              steps {
                 sh './gradlew clean && rm -rf ./app/build/'
-                sh './gradlew assembleRelease'
+                sh './gradlew assemble${params.build_type}'
              }
         }
        stage('UnitTest'){
