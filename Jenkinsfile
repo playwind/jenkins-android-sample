@@ -1,9 +1,5 @@
 pipeline{
-    agent {
-        docker {
-            image 'allbears/jenkins-android:1.0.1'
-        }
-    }
+    agent any
     stages {
         stage('Build'){
              steps {
