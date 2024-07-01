@@ -2,7 +2,6 @@ pipeline{
     agent {
         docker {
             image 'allbears/jenkins-android:1.0.1'
-            label 'docker' // 你可以指定一个标签来标识特定的节点
         }
     }
     stages {
