@@ -14,7 +14,7 @@ pipeline{
         stage('Build'){
              steps {
                 sh './gradlew clean && rm -rf ./app/build/'
-                sh './gradlew assemble${params.build_type}'
+                sh "./gradlew assemble${params.build_type}"
              }
         }
        stage('UnitTest'){
